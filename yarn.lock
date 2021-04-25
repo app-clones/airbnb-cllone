@@ -10,6 +10,8 @@ __metadata:
   resolution: "@abb/server@workspace:packages/server"
   dependencies:
     "@types/node": ^14.14.41
+    "@types/uuid": ^8.3.0
+    gql2ts: ^1.10.1
     graphql-yoga: ^1.18.3
     nodemon: ^2.0.7
     pg: 8.6.0
@@ -17,8 +19,53 @@ __metadata:
     ts-node: 9.1.1
     typeorm: 0.2.32
     typescript: 4.2.4
+    uuid: ^8.3.2
   languageName: unknown
   linkType: soft
+
+"@gql2ts/from-query@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "@gql2ts/from-query@npm:1.9.0"
+  dependencies:
+    "@gql2ts/language-typescript": ^1.9.0
+    "@gql2ts/util": ^1.9.0
+  peerDependencies:
+    graphql: ">= 0.10 <15"
+  checksum: 56925e562e19bab85b862c8c74cc74d83676c7791e0ba5a1e9177af1d333964ee9afb22d35aee94af8f98d05824207872ed0c8928cc6bb9787e56b4da53b4cc3
+  languageName: node
+  linkType: hard
+
+"@gql2ts/from-schema@npm:^1.10.1":
+  version: 1.10.1
+  resolution: "@gql2ts/from-schema@npm:1.10.1"
+  dependencies:
+    "@gql2ts/language-typescript": ^1.9.0
+    "@gql2ts/util": ^1.9.0
+    dedent: ^0.7.0
+  peerDependencies:
+    graphql: ">= 0.10 <15"
+  checksum: fb56ab9150ef6d7c55fdb90ed946eea2038f82c6b2f062e4e291ed2a0c7c5eead5b5609e7904133b27cab49f4f422e7474cf0612ea8edb167eaf6dd4100cc831
+  languageName: node
+  linkType: hard
+
+"@gql2ts/language-typescript@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "@gql2ts/language-typescript@npm:1.9.0"
+  dependencies:
+    "@gql2ts/util": ^1.9.0
+    humps: ^2.0.0
+  checksum: f010b63a209683678fb0ceee94ac4cc763f7a428fc464848ddd42f0585f6706f6fb1117ac37700022bf8543d85f3d4e82ac03e0f1d2ea396a3082c177f524f25
+  languageName: node
+  linkType: hard
+
+"@gql2ts/util@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "@gql2ts/util@npm:1.9.0"
+  peerDependencies:
+    graphql: ">= 0.10 <15"
+  checksum: 7b6d2ebea4801e2e9ba79fa3cfff49c84d16317ddfdaed0da6a7b6e7fb84ebe8d284abfddc91ec55b812db24845e154b5567b88c571087893b927149bbdedd1d
+  languageName: node
+  linkType: hard
 
 "@npmcli/move-file@npm:^1.0.1":
   version: 1.1.2
@@ -183,6 +230,13 @@ __metadata:
     "@types/mime": ^1
     "@types/node": "*"
   checksum: f261127514057b5c038d76259128d7b765dd92bfeaf769d05b8ddf5f254d066ce6142a935e2fc707bb3009d6544a979591852f0d135d0ed4d0c56db08738df6b
+  languageName: node
+  linkType: hard
+
+"@types/uuid@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "@types/uuid@npm:8.3.0"
+  checksum: 620985aed8fdb4aed153daca5235f4303457a67a4d181efac0021712eabd9edd7e88895f79730c0e651effde7633b1b61e49a81519ac8d4e75019d2ac9b6412f
   languageName: node
   linkType: hard
 
@@ -808,6 +862,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^2.9.0":
+  version: 2.20.3
+  resolution: "commander@npm:2.20.3"
+  checksum: b73428e97de7624323f81ba13f8ed9271de487017432d18b4da3f07cfc528ad754bbd199004bd5d14e0ccd67d1fdfe0ec8dbbd4c438b401df3c4cc387bfd1daa
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -952,6 +1013,13 @@ __metadata:
   dependencies:
     mimic-response: ^1.0.0
   checksum: 93b0dcc8f0c32f1d5eb656e7db54fa5554227b8bfefd242c9d28f7b9c3908052c2ab8297b4af6256759da496679ee3a806d559f22d29b7e71a25879a2c25b99b
+  languageName: node
+  linkType: hard
+
+"dedent@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "dedent@npm:0.7.0"
+  checksum: 05c18541a4b932006a65eccaf03d68ac60552981db424f39f1ca4bebf5beaa53d318eadbb4dc0be24232844e69d1140763a7ada94559b2cb7771a47c0a829aeb
   languageName: node
   linkType: hard
 
@@ -1378,6 +1446,21 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"gql2ts@npm:^1.10.1":
+  version: 1.10.1
+  resolution: "gql2ts@npm:1.10.1"
+  dependencies:
+    "@gql2ts/from-query": ^1.9.0
+    "@gql2ts/from-schema": ^1.10.1
+    "@gql2ts/util": ^1.9.0
+    commander: ^2.9.0
+    graphql: ">= 0.10 <15"
+  bin:
+    gql2ts: ./dist/index.js
+  checksum: d02ae6626006307493839b3cbdc37554a4504541dbee8b030486aa5193734a7e96d7c50e994ec450976306c9dc0a99a4cd40fda0bc27aa385848b841134f691a
+  languageName: node
+  linkType: hard
+
 "graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.2.6":
   version: 4.2.6
   resolution: "graceful-fs@npm:4.2.6"
@@ -1526,7 +1609,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"graphql@npm:^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0":
+"graphql@npm:>= 0.10 <15, graphql@npm:^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0":
   version: 14.7.0
   resolution: "graphql@npm:14.7.0"
   dependencies:
@@ -1652,6 +1735,13 @@ fsevents@~2.3.1:
   dependencies:
     ms: ^2.0.0
   checksum: 4a08769434132a229a6153e77c869a9fe7132dc003d90119d54958e7b75feb65a3c4eca19fb18921568878ac455b6f399013279ad33248d94bd61a25def1fdda
+  languageName: node
+  linkType: hard
+
+"humps@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "humps@npm:2.0.1"
+  checksum: d7758bccbb073b93d5a714faf635f3fc622502364f1c7ca9db4bfe74fb61832f5c86cef5db37881bf6ca370a167bf19bc11033930248d1e3ef1a4545bcaae357
   languageName: node
   linkType: hard
 
@@ -3417,6 +3507,15 @@ typescript@4.2.4:
   bin:
     uuid: ./bin/uuid
   checksum: 1ce3f37e214d6d0dc94a6a9663a0365013ace66bc3fd5b203e6f5d2eeb978aaee1192367222386345d30b4c6a447928c501121aa84c637724bf105ef57284949
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^8.3.2":
+  version: 8.3.2
+  resolution: "uuid@npm:8.3.2"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: aed2bcef341f95635f308fea8831fb9038b18c485fe7e71feb89d2e05602dfecad0cb6f2246fae096d4da425cca6e8a71056f28abd97ad98cf770a2018853248
   languageName: node
   linkType: hard
 
