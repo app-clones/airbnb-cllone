@@ -11,6 +11,7 @@ __metadata:
   dependencies:
     "@types/node": ^14.14.41
     "@types/uuid": ^8.3.0
+    argon2: ^0.27.2
     gql2ts: ^1.10.1
     graphql-yoga: ^1.18.3
     nodemon: ^2.0.7
@@ -67,6 +68,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mapbox/node-pre-gyp@npm:^1.0.1":
+  version: 1.0.4
+  resolution: "@mapbox/node-pre-gyp@npm:1.0.4"
+  dependencies:
+    detect-libc: ^1.0.3
+    https-proxy-agent: ^5.0.0
+    make-dir: ^3.1.0
+    node-fetch: ^2.6.1
+    nopt: ^5.0.0
+    npmlog: ^4.1.2
+    rimraf: ^3.0.2
+    semver: ^7.3.4
+    tar: ^6.1.0
+  bin:
+    node-pre-gyp: bin/node-pre-gyp
+  checksum: 591616bcc7d7857e09601f4ad9dfe543c944baab7b637d7106174fc329305c4c85188a249d4c3af0c8358d7003e7799fea588f8755cc5901e00786cac6fa9783
+  languageName: node
+  linkType: hard
+
 "@npmcli/move-file@npm:^1.0.1":
   version: 1.1.2
   resolution: "@npmcli/move-file@npm:1.1.2"
@@ -74,6 +94,13 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: d178d86a0a96e5aa12e6d70c00d50eb3bb9a58c0cf1c36e1d7f240acb4ae3f14642c6314659c438ea409a509f08c2a62e29c9346a033e554c3f6921cdb293219
+  languageName: node
+  linkType: hard
+
+"@phc/format@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@phc/format@npm:1.0.0"
+  checksum: 4ad791bb211e336de79bb5c1dac3d9d073ff8d0e4dc009a8b8a10d92ed628b22c35cd71e38f1fd54abc1749fad894ab1f2d76e354d6066f165465001d6640459
   languageName: node
   linkType: hard
 
@@ -512,6 +539,18 @@ __metadata:
   version: 4.1.3
   resolution: "arg@npm:4.1.3"
   checksum: 81b3b40b1529c4fbf75b12f7c3e6fb2dcce9e78072063babc169de9b4f40777788f3d2b04380f659ef676a756e03ccfbfe78adf4477353bda906295fa69dab89
+  languageName: node
+  linkType: hard
+
+"argon2@npm:^0.27.2":
+  version: 0.27.2
+  resolution: "argon2@npm:0.27.2"
+  dependencies:
+    "@mapbox/node-pre-gyp": ^1.0.1
+    "@phc/format": ^1.0.0
+    node-addon-api: ^3.0.2
+    opencollective-postinstall: ^2.0.3
+  checksum: 3fa40e1f8a38c4fdb422db1c5fea59254cf27ad5f5bbc7b60495d59f45b48eeac58859cc6fef5ae86ea3be1e310149fbcce92a5698f47c00e0e8e77aa29d5a3e
   languageName: node
   linkType: hard
 
@@ -1062,6 +1101,15 @@ __metadata:
   version: 1.0.4
   resolution: "destroy@npm:1.0.4"
   checksum: 5a516fc5a8a8089eecdac11da2339353542be7a71102dc5a1372ef6161501bf5c1ee59ff9f8a3f5f14cc8c88594d606f855f816d46a228ee5e0e5cb2b543534b
+  languageName: node
+  linkType: hard
+
+"detect-libc@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "detect-libc@npm:1.0.3"
+  bin:
+    detect-libc: ./bin/detect-libc.js
+  checksum: 6cec442139459ec2e8517076974b0eba42079885938683eca013c2e0b5db02ef048870725ce68e7ac8e4cf17e482f67d7322f45bbc5f203b7332817bc7833b39
   languageName: node
   linkType: hard
 
@@ -2069,7 +2117,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"make-dir@npm:^3.0.0":
+"make-dir@npm:^3.0.0, make-dir@npm:^3.1.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
   dependencies:
@@ -2302,6 +2350,22 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"node-addon-api@npm:^3.0.2":
+  version: 3.1.0
+  resolution: "node-addon-api@npm:3.1.0"
+  dependencies:
+    node-gyp: latest
+  checksum: 9b5c1f5f24acb9255fd47914b0f0b80c76d735b7b91611366cd30217f8ead5fafcd1cfeb65e467612b40420b6ad3faf1e7fa3666bd4e15a2bdf1762748f3fa8a
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "node-fetch@npm:2.6.1"
+  checksum: cbb171635e538162b977eac5dfe7a1e07a9a02e991924377a6435502291e2f823d306b95aabc455caebf4a118ccf836868462bc70ccc3095af02bb9da61fda37
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:latest":
   version: 8.0.0
   resolution: "node-gyp@npm:8.0.0"
@@ -2426,6 +2490,15 @@ fsevents@~2.3.1:
   dependencies:
     wrappy: 1
   checksum: 57afc246536cf6494437f982b26475f22bee860f8b77ce8eb1543f42a8bffe04b2c66ddfea9a16cb25ccb80943f8ee4fc639367ef97b7a6a4f2672eb573963f5
+  languageName: node
+  linkType: hard
+
+"opencollective-postinstall@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "opencollective-postinstall@npm:2.0.3"
+  bin:
+    opencollective-postinstall: index.js
+  checksum: d75b06b80eb426aaf099307ca4398f3119c8c86ff3806a95cfe234b979b80c07080040734fe2dc3c51fed5b15bd98dae88340807980bdc74aa1ebf045c74ef06
   languageName: node
   linkType: hard
 
@@ -2905,7 +2978,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.5":
+"semver@npm:^7.3.4, semver@npm:^7.3.5":
   version: 7.3.5
   resolution: "semver@npm:7.3.5"
   dependencies:

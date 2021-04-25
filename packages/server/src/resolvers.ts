@@ -1,3 +1,5 @@
+import * as argon2 from "argon2";
+import { User } from "./entity/User";
 import { ResolverMap } from "./types/graphql-utils";
 
 export const resolvers: ResolverMap = {
@@ -6,8 +8,18 @@ export const resolvers: ResolverMap = {
             `Hello ${name || "World!"}`
     },
     Mutation: {
-        register: (_, {}: GQL.IRegisterOnMutationArguments) => {
-            // TODO: Add register logic
+        register: async (
+            _,
+            { email, password }: GQL.IRegisterOnMutationArguments
+        ) => {
+            const hashedPassword = await argon2.hash(password);
+            const user = User.create({
+                email,
+                password: hashedPassword
+            });
+
+            await user.save();
+            return true;
         }
     }
 };
