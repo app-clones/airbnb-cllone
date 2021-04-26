@@ -1,11 +1,10 @@
 import * as argon2 from "argon2";
-import { User } from "./entity/User";
-import { ResolverMap } from "./types/graphql-utils";
+import { User } from "../../entity/User";
+import { ResolverMap } from "../../types/graphql-utils";
 
 export const resolvers: ResolverMap = {
     Query: {
-        hello: (_, { name }: GQL.IHelloOnQueryArguments) =>
-            `Hello ${name || "World!"}`
+        bugFix: () => "Fixes annoying bug"
     },
     Mutation: {
         register: async (

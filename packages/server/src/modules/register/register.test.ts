@@ -2,8 +2,8 @@ import { request } from "graphql-request";
 import { Server as HttpServer } from "http";
 import { Server as HttpsServer } from "https";
 
-import { startServer } from "../startServer";
-import { User } from "../entity/User";
+import { startServer } from "../../startServer";
+import { User } from "../../entity/User";
 import { getConnection } from "typeorm";
 
 let app: HttpServer | HttpsServer;
