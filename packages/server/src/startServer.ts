@@ -25,6 +25,7 @@ export const startServer = async () => {
         schemas.push(addResolversToSchema({ schema: typeDefs, resolvers }));
     });
 
+    // @ts-ignore
     const server = new GraphQLServer({ schema: mergeSchemas({ schemas }) });
     await createTypeormConn();
     const app = await server.start();

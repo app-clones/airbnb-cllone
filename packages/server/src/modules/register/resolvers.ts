@@ -1,5 +1,6 @@
 import * as argon2 from "argon2";
 import { User } from "../../entity/User";
+import { MutationRegisterArgs } from "../../types/graphql";
 import { ResolverMap } from "../../types/graphql-utils";
 
 export const resolvers: ResolverMap = {
@@ -7,10 +8,7 @@ export const resolvers: ResolverMap = {
         bugFix: () => "Fixes annoying bug"
     },
     Mutation: {
-        register: async (
-            _,
-            { email, password }: GQL.IRegisterOnMutationArguments
-        ) => {
+        register: async (_, { email, password }: MutationRegisterArgs) => {
             const userAlreadyExists = await User.findOne({
                 where: { email },
                 select: ["id"]
