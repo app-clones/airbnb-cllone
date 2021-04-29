@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { User } from "../../entity/User";
 import { MutationRegisterArgs } from "../../types/graphql";
 import { ResolverMap } from "../../types/graphql-utils";
+import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 import { formatYupError } from "../../utils/formatYupError";
 import {
     duplicateEmail,
@@ -28,7 +29,7 @@ export const resolvers: ResolverMap = {
         bugFix: () => "Fixes annoying bug"
     },
     Mutation: {
-        register: async (_, args: MutationRegisterArgs) => {
+        register: async (_, args: MutationRegisterArgs, { redis, url }) => {
             try {
                 await schema.validate(args, { abortEarly: false });
             } catch (err) {
@@ -56,8 +57,15 @@ export const resolvers: ResolverMap = {
                 email,
                 password: hashedPassword
             });
-
             await user.save();
+
+            const confirmLink = await createConfirmEmailLink(
+                url,
+                user.id,
+                redis
+            );
+            console.log(confirmLink);
+
             return null;
         }
     }
