@@ -1,27 +1,14 @@
 import { request } from "graphql-request";
-import { Server as HttpServer } from "http";
-import { Server as HttpsServer } from "https";
-
-import { startServer } from "../../startServer";
-import { User } from "../../entity/User";
 import { getConnection } from "typeorm";
+
+import { User } from "../../entity/User";
+import { createTypeormConn } from "../../utils/createTypeormConn";
 import {
     duplicateEmail,
     invalidEmail,
     shortEmail,
     shortPassword
 } from "./errorMessages";
-
-let app: HttpServer | HttpsServer;
-
-beforeAll(async () => {
-    app = await startServer();
-});
-
-afterAll(async () => {
-    app.close();
-    await getConnection().close();
-});
 
 const email = "testing@testing.com";
 const password = "password123";
@@ -34,6 +21,14 @@ mutation {
   }
 }
 `;
+
+beforeAll(async () => {
+    await createTypeormConn();
+});
+
+afterAll(async () => {
+    await getConnection().close();
+});
 
 describe("Regiser user", () => {
     let users: Array<any> = [];

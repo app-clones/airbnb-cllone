@@ -52,5 +52,5 @@ export const startServer = async () => {
     const app = await server.start();
     console.log("Server is running on http://localhost:4000");
 
-    return app;
+    return { app, redis };
 };

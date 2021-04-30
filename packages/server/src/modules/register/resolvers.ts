@@ -59,12 +59,7 @@ export const resolvers: ResolverMap = {
             });
             await user.save();
 
-            const confirmLink = await createConfirmEmailLink(
-                url,
-                user.id,
-                redis
-            );
-            console.log(confirmLink);
+            await createConfirmEmailLink(url, user.id, redis);
 
             return null;
         }
