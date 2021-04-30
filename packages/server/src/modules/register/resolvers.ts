@@ -6,6 +6,7 @@ import { MutationRegisterArgs } from "../../types/graphql";
 import { ResolverMap } from "../../types/graphql-utils";
 import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 import { formatYupError } from "../../utils/formatYupError";
+import { sendEmail } from "../../utils/sendEmail";
 import {
     duplicateEmail,
     invalidEmail,
@@ -59,7 +60,18 @@ export const resolvers: ResolverMap = {
             });
             await user.save();
 
-            await createConfirmEmailLink(url, user.id, redis);
+            const confirmLink = await createConfirmEmailLink(
+                url,
+                user.id,
+                redis
+            );
+
+            if (process.env.NODE_ENV !== "test")
+                await sendEmail(
+                    "Confirm Email",
+                    email,
+                    `Click <a href=${confirmLink}>here</a> to confirm your email for AirBNB`
+                );
 
             return null;
         }

@@ -19,13 +19,16 @@ __metadata:
     "@types/ioredis": ^4.26.0
     "@types/jest": 26.0.23
     "@types/node": 15.0.0
+    "@types/nodemailer": ^6.4.1
     "@types/uuid": ^8.3.0
     argon2: ^0.27.2
+    dotenv: ^8.2.0
     graphql: ^15.5.0
     graphql-request: ^3.4.0
     graphql-yoga: ^1.18.3
     ioredis: ^4.27.1
     jest: ^26.6.3
+    nodemailer: ^6.6.0
     nodemon: ^2.0.7
     pg: 8.6.0
     phin: ^3.5.1
@@ -1837,6 +1840,15 @@ __metadata:
   version: 15.0.0
   resolution: "@types/node@npm:15.0.0"
   checksum: 9d3ced65feb73444056941cc7bcbbc4885b60fb22ba3c38e1ad26c96909dd914e1d87fa4c22a5dbada8588606c56116bbd6d42569e87513866919b801e314d2e
+  languageName: node
+  linkType: hard
+
+"@types/nodemailer@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "@types/nodemailer@npm:6.4.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 3c25dc14c829bb5dc00de2d1308c208faa395446f357b55d36f28b6640b19f97cd1f8a1596ef1cb7938897a685619b4bd2adfc1f47375afce048c11e7ee52d65
   languageName: node
   linkType: hard
 
@@ -7424,6 +7436,13 @@ __metadata:
   version: 1.1.71
   resolution: "node-releases@npm:1.1.71"
   checksum: 9e283003f1deafd0ca7f9bbde9c4b5b05d880ca165217f5227b37406626d6689a246a5c4c72f9a8512be65cd51b13cc7d0f5d8bc68ad36089b620f1810292340
+  languageName: node
+  linkType: hard
+
+"nodemailer@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "nodemailer@npm:6.6.0"
+  checksum: 2582ed043577ad458f04ad58586eb25d56bae575059049c3c62d25c1db613ffd55195ff0568ee63699c5897a0b20b20609385799eb7b4d1274b8f2a369e478f4
   languageName: node
   linkType: hard
 
