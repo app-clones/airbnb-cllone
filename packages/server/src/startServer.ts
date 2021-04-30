@@ -2,7 +2,6 @@ import { GraphQLServer } from "graphql-yoga";
 import fs from "fs";
 import path from "path";
 import { GraphQLSchema } from "graphql";
-import Redis from "ioredis";
 
 import { loadSchemaSync } from "@graphql-tools/load";
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
@@ -10,7 +9,8 @@ import { addResolversToSchema } from "@graphql-tools/schema";
 import { mergeSchemas } from "@graphql-tools/merge";
 
 import { createTypeormConn } from "./utils/createTypeormConn";
-import { User } from "./entity/User";
+import redis from "./utils/redis";
+import { confirmEmail } from "./routes/confirmEmail";
 
 export const startServer = async () => {
     const schemas: GraphQLSchema[] = [];
@@ -27,7 +27,6 @@ export const startServer = async () => {
         schemas.push(addResolversToSchema({ schema: typeDefs, resolvers }));
     });
 
-    const redis = new Redis();
     const server = new GraphQLServer({
         // @ts-ignore
         schema: mergeSchemas({ schemas }),
@@ -37,17 +36,7 @@ export const startServer = async () => {
         })
     });
 
-    server.express.get("/confirm/:id", async (req, res) => {
-        const { id } = req.params;
-        const userId = await redis.get(id);
-        if (userId) {
-            await User.update({ id: userId }, { confirmed: true });
-            await redis.del(id);
-            return res.send("Ok");
-        } else {
-            return res.status(401).send("Invalid code");
-        }
-    });
+    server.express.get("/confirm/:id", confirmEmail);
 
     await createTypeormConn();
     const app = await server.start();
