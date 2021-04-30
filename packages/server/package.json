@@ -38,8 +38,8 @@
         "gen-types": "graphql-codegen --config codegen.yml"
     },
     "jest": {
-        "globalSetup": "./src/utils/testUtils/setupTests.ts",
-        "globalTeardown": "./src/utils/testUtils/teardownTests.ts",
+        "globalSetup": "./src/tests/utils/setupTests.ts",
+        "globalTeardown": "./src/tests/utils/teardownTests.ts",
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
         },
