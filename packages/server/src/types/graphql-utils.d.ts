@@ -1,7 +1,11 @@
 import { Redis } from "ioredis";
 import { CustomRequest } from "../types/types";
 
-export type Context = { redis: Redis; url: string; req: CustomRequest };
+export interface Context {
+    redis: Redis;
+    url: string;
+    req: CustomRequest;
+}
 
 export type Resolver = (
     parent: any,

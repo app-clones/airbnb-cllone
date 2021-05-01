@@ -22,7 +22,26 @@ afterAll(async () => {
 });
 
 describe("Logout", () => {
-    test("Successfully logs out user", async () => {
+    test("Successfully logs out all users sessions", async () => {
+        // Computer 1
+        const sess1 = new TestClient(process.env.TEST_HOST!);
+
+        // Computer 2
+        const sess2 = new TestClient(process.env.TEST_HOST!);
+
+        await sess1.login(email, password);
+        await sess2.login(email, password);
+
+        expect((await sess1.me()).data.data).toEqual(
+            (await sess2.me()).data.data
+        );
+        await sess1.logout();
+        expect((await sess1.me()).data.data).toEqual(
+            (await sess2.me()).data.data
+        );
+    });
+
+    test("Successfully logs out one user's session", async () => {
         const client = new TestClient(process.env.TEST_HOST!);
 
         await client.login(email, password);

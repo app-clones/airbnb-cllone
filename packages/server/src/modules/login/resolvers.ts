@@ -3,6 +3,7 @@ import argon2 from "argon2";
 import { User } from "../../entity/User";
 import { MutationLoginArgs } from "../../types/graphql";
 import { ResolverMap } from "../../types/graphql-utils";
+import { userSessionIdPrefix } from "../../utils/constants";
 import { invalidLogin, confirmEmail } from "./errorMessages";
 
 export const resolvers: ResolverMap = {
@@ -10,7 +11,11 @@ export const resolvers: ResolverMap = {
         bugFix: () => "Fixes annoying bug"
     },
     Mutation: {
-        login: async (_, { email, password }: MutationLoginArgs, { req }) => {
+        login: async (
+            _,
+            { email, password }: MutationLoginArgs,
+            { req, redis }
+        ) => {
             const user = await User.findOne({ where: { email } });
 
             if (!user) {
@@ -42,6 +47,12 @@ export const resolvers: ResolverMap = {
             }
 
             req.session.userId = user.id;
+            if (req.sessionID) {
+                await redis.lpush(
+                    `${userSessionIdPrefix}${user.id}`,
+                    req.sessionID
+                );
+            }
 
             return null;
         }

@@ -16,6 +16,7 @@ import { mergeSchemas } from "@graphql-tools/merge";
 import { createTypeormConn } from "./utils/createTypeormConn";
 import redis from "./utils/redis";
 import { confirmEmail } from "./routes/confirmEmail";
+import { redisSessionPrefix } from "./utils/constants";
 
 export const startServer = async () => {
     const schemas: GraphQLSchema[] = [];
@@ -47,7 +48,8 @@ export const startServer = async () => {
     server.express.use(
         session({
             store: new RedisStore({
-                client: redis as any
+                client: redis as any,
+                prefix: redisSessionPrefix
             }),
             name: "qid",
             secret: process.env.SESSION_SECRET!,
