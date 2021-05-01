@@ -4,7 +4,11 @@ import { User } from "../../entity/User";
 import { MutationLoginArgs } from "../../types/graphql";
 import { ResolverMap } from "../../types/graphql-utils";
 import { userSessionIdPrefix } from "../../utils/constants";
-import { invalidLogin, confirmEmail } from "./errorMessages";
+import {
+    invalidLogin,
+    confirmEmail,
+    forgotPasswordLockedError
+} from "./errorMessages";
 
 export const resolvers: ResolverMap = {
     Query: {
@@ -32,6 +36,15 @@ export const resolvers: ResolverMap = {
                     {
                         path: "email",
                         message: confirmEmail
+                    }
+                ];
+            }
+
+            if (user.forgotPasswordLocked) {
+                return [
+                    {
+                        path: "email",
+                        message: forgotPasswordLockedError
                     }
                 ];
             }
