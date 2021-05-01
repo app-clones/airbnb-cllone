@@ -12,8 +12,8 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [14.x, 15.x, 16.x]
-                os: [ubuntu-latest, windows-latest, macOS-latest]
+                node-version: [14.x, 15.x]
+                os: [ubuntu-latest, macOS-latest] # There isn't a redis image that supports all the OS's sadly
 
         steps:
             - uses: actions/checkout@v2
@@ -22,10 +22,10 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
 
-            - name: Start Redis
-              uses: zhulik/redis-action@1.1.0
+            - name: Setup Redis
+              uses: shogo82148/actions-setup-redis@v1
               with:
-                  redis version: 5
+                  redis-version: "6.x"
 
             - name: Setup Postgresql
               uses: harmon758/postgresql-action@v1
