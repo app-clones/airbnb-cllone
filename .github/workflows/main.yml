@@ -31,6 +31,9 @@ jobs:
               uses: harmon758/postgresql-action@v1
               with:
                   postgresql version: "12.6"
+                  postgresql user: "beatzoid"
+                  postgresql password: "beatzoid"
+                  postgresql db: "airbnb-testing"
 
             - name: Install Dependencies
               run: yarn install
