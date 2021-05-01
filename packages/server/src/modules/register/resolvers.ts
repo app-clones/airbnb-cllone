@@ -1,4 +1,4 @@
-import * as argon2 from "argon2";
+import argon2 from "argon2";
 import * as yup from "yup";
 
 import { User } from "../../entity/User";
