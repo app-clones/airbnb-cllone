@@ -12,6 +12,6 @@
     },
     "scripts": {
         "prepare": "husky install",
-        "test": "cd packages/server && yarn install && yarn test"
+        "test": "yarn install && cd packages/server  && yarn test"
     }
 }
