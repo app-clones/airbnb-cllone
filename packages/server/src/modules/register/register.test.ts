@@ -3,12 +3,8 @@ import { getConnection } from "typeorm";
 import { User } from "../../entity/User";
 import { TestClient } from "../../tests/utils/TestClient";
 import { createTypeormConn } from "../../utils/createTypeormConn";
-import {
-    duplicateEmail,
-    invalidEmail,
-    shortEmail,
-    shortPassword
-} from "./errorMessages";
+import { duplicateEmail, invalidEmail, shortEmail } from "./errorMessages";
+import { shortPassword } from "../shared/sharedErrorMessages";
 
 const email = "testing@testing.com";
 const password = "password123";

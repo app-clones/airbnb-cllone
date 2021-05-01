@@ -1,4 +1,3 @@
-
 import * as yup from "yup";
 
 import { User } from "../../entity/User";
@@ -7,12 +6,8 @@ import { ResolverMap } from "../../types/graphql-utils";
 import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 import { formatYupError } from "../../utils/formatYupError";
 import { sendEmail } from "../../utils/sendEmail";
-import {
-    duplicateEmail,
-    invalidEmail,
-    shortEmail,
-    shortPassword
-} from "./errorMessages";
+import { duplicateEmail, invalidEmail, shortEmail } from "./errorMessages";
+import { registerPasswordValidation } from "../../utils/yupSchemas";
 
 const schema = yup.object().shape({
     email: yup
@@ -22,7 +17,7 @@ const schema = yup.object().shape({
         .email(invalidEmail)
         .required()
         .ensure(),
-    password: yup.string().min(7, shortPassword).required().ensure()
+    password: registerPasswordValidation
 });
 
 export const resolvers: ResolverMap = {

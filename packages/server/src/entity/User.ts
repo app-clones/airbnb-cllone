@@ -3,7 +3,8 @@ import {
     Column,
     BaseEntity,
     PrimaryGeneratedColumn,
-    BeforeInsert
+    BeforeInsert,
+    BeforeUpdate
 } from "typeorm";
 import argon2 from "argon2";
 
@@ -24,8 +25,9 @@ export class User extends BaseEntity {
     @Column("boolean", { default: false })
     forgotPasswordLocked: boolean;
 
+    @BeforeUpdate()
     @BeforeInsert()
     async hashPassword() {
-        this.password = await argon2.hash(this.password);
+        if (this.password) this.password = await argon2.hash(this.password);
     }
 }

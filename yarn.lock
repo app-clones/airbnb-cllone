@@ -15,12 +15,12 @@ __metadata:
     "@graphql-tools/graphql-file-loader": ^6.2.7
     "@graphql-tools/load": ^6.2.8
     "@graphql-tools/merge": ^6.2.13
-    "@graphql-tools/schema": ^7.1.3
+    "@graphql-tools/schema": ^7.1.5
     "@types/connect-redis": ^0.0.16
     "@types/express-session": ^1.17.3
-    "@types/ioredis": ^4.26.0
+    "@types/ioredis": ^4.26.1
     "@types/jest": 26.0.23
-    "@types/node": 15.0.0
+    "@types/node": 15.0.1
     "@types/nodemailer": ^6.4.1
     "@types/tough-cookie": ^4.0.0
     "@types/uuid": ^8.3.0
@@ -31,7 +31,6 @@ __metadata:
     dotenv: ^8.2.0
     express-session: ^1.17.1
     graphql: ^15.5.0
-    graphql-request: ^3.4.0
     graphql-yoga: ^1.18.3
     ioredis: ^4.27.1
     jest: ^26.6.3
@@ -1190,7 +1189,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/schema@npm:^7.0.0, @graphql-tools/schema@npm:^7.1.2, @graphql-tools/schema@npm:^7.1.3":
+"@graphql-tools/schema@npm:^7.0.0, @graphql-tools/schema@npm:^7.1.2":
   version: 7.1.3
   resolution: "@graphql-tools/schema@npm:7.1.3"
   dependencies:
@@ -1199,6 +1198,19 @@ __metadata:
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0
   checksum: a0e0f9e5c746500702ed1316c6b97bb43ce171bb2fa865e7de38a5f958290094207172af4b9ba82dedf783ae42bcd7fd89b7d613affbe6717c40e758f04b77da
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/schema@npm:^7.1.5":
+  version: 7.1.5
+  resolution: "@graphql-tools/schema@npm:7.1.5"
+  dependencies:
+    "@graphql-tools/utils": ^7.1.2
+    tslib: ~2.2.0
+    value-or-promise: 1.0.6
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0
+  checksum: 23b1e5443919a2d9abff535bfa9cd935e3ee3f0b2e3938d396af40ffcbf8d90bacf74fd3faf895845b1b0bf7cada5f7e0d1fd67f667ec02752884f25b1e19ac4
   languageName: node
   linkType: hard
 
@@ -1767,21 +1779,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ioredis@npm:*":
+"@types/ioredis@npm:*, @types/ioredis@npm:^4.26.1":
   version: 4.26.1
   resolution: "@types/ioredis@npm:4.26.1"
   dependencies:
     "@types/node": "*"
   checksum: 2c262483a755e67517a2ae2b6c5e341d118b243427f1920841607d4dd53fcc1b5add45e8ac1e124bb2198f380a9ca89eb78bbc7587f1e15ed9212655fdc466f5
-  languageName: node
-  linkType: hard
-
-"@types/ioredis@npm:^4.26.0":
-  version: 4.26.0
-  resolution: "@types/ioredis@npm:4.26.0"
-  dependencies:
-    "@types/node": "*"
-  checksum: 5193c3a7d8952fda2487b8e1672c5ec9b04234a31b836ba3563264a4a26fbc1dc6b420e562b05b5eb01e0cce2018f2f3bbefb73751b9b56cd7eeecfe72e136bf
   languageName: node
   linkType: hard
 
@@ -1873,10 +1876,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:15.0.0":
-  version: 15.0.0
-  resolution: "@types/node@npm:15.0.0"
-  checksum: 9d3ced65feb73444056941cc7bcbbc4885b60fb22ba3c38e1ad26c96909dd914e1d87fa4c22a5dbada8588606c56116bbd6d42569e87513866919b801e314d2e
+"@types/node@npm:15.0.1":
+  version: 15.0.1
+  resolution: "@types/node@npm:15.0.1"
+  checksum: 4e4fb69394efb224272ad7c6b6dc16a381b97e46a8f3c21d33fec51ef13a4d635f571b446d127eae333ea6a763f304b787f4b3f73e24e1f3b05a21b481900dfb
   languageName: node
   linkType: hard
 
@@ -4974,7 +4977,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-request@npm:^3.3.0, graphql-request@npm:^3.4.0":
+"graphql-request@npm:^3.3.0":
   version: 3.4.0
   resolution: "graphql-request@npm:3.4.0"
   dependencies:
@@ -10391,6 +10394,13 @@ typescript@^4.2.4:
     spdx-correct: ^3.0.0
     spdx-expression-parse: ^3.0.0
   checksum: 940899bd4eacfa012ceecb10a5814ba0e8103da5243aa74d0d62f1f8a405efcd23e034fb7193e2d05b392870c53aabcb1f66439b062075cdcb28bc5d562a8ff6
+  languageName: node
+  linkType: hard
+
+"value-or-promise@npm:1.0.6":
+  version: 1.0.6
+  resolution: "value-or-promise@npm:1.0.6"
+  checksum: ea5fa311aad0c6f63feccb6891e162f847e9bb2b257813eef8fc945f9e48b3df5fe7402227309171f0b096b6c2d17e163d6384ec3de819f49743537bde078699
   languageName: node
   linkType: hard
 

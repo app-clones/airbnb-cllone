@@ -23,6 +23,7 @@ export const startServer = async () => {
     const folders = fs.readdirSync(path.join(__dirname, "modules"));
 
     folders.forEach((folder) => {
+        if (folder === "shared") return;
         const { resolvers } = require(`./modules/${folder}/resolvers`);
         const typeDefs = loadSchemaSync(
             path.join(__dirname, `./modules/${folder}/schema.graphql`),
