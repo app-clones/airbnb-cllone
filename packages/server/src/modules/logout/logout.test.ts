@@ -1,7 +1,7 @@
-import axios from "axios";
 import { createTypeormConn } from "../../utils/createTypeormConn";
 import { User } from "../../entity/User";
 import { getConnection } from "typeorm";
+import { TestClient } from "../../tests/utils/TestClient";
 
 let userId: string;
 const email = "testing@testing.com";
@@ -21,54 +21,13 @@ afterAll(async () => {
     await getConnection().close();
 });
 
-const loginMutation = (e: string, p: string) => `
-mutation {
-    login(email: "${e}", password: "${p}") {
-        path
-        message
-    }
-}
-`;
-
-const meQuery = `
-{
-    me {
-      id
-      email
-    }
-  }
-`;
-
-const logoutMutation = `
-mutation {
-    logout
-}
-`;
-
 describe("Logout", () => {
     test("Successfully logs out user", async () => {
-        // Login user
-        await axios.post(
-            process.env.TEST_HOST as string,
-            {
-                query: loginMutation(email, password)
-            },
-            {
-                withCredentials: true
-            }
-        );
+        const client = new TestClient(process.env.TEST_HOST!);
 
-        // Get current user using me query
-        let response = await axios.post(
-            process.env.TEST_HOST as string,
-            {
-                query: meQuery
-            },
-            {
-                withCredentials: true
-            }
-        );
+        await client.login(email, password);
 
+        let response = await client.me();
         expect(response.data.data).toEqual({
             me: {
                 id: userId,
@@ -76,27 +35,9 @@ describe("Logout", () => {
             }
         });
 
-        // Logout user
-        await axios.post(
-            process.env.TEST_HOST as string,
-            {
-                query: logoutMutation
-            },
-            {
-                withCredentials: true
-            }
-        );
+        await client.logout();
 
-        // Get current user using me query (should be null)
-        response = await axios.post(
-            process.env.TEST_HOST as string,
-            {
-                query: meQuery
-            },
-            {
-                withCredentials: true
-            }
-        );
+        response = await client.me();
 
         expect(response.data.data.me).toBeNull();
     });

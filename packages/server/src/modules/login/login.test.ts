@@ -1,29 +1,12 @@
-import request from "graphql-request";
 import { invalidLogin, confirmEmail } from "./errorMessages";
 import { User } from "../../entity/User";
 import { createTypeormConn } from "../../utils/createTypeormConn";
 import { getConnection } from "typeorm";
+import { TestClient } from "../../tests/utils/TestClient";
 
 const email = "testing@testing.com";
 const password = "password123";
-
-const registerMutation = (e: string, p: string) => `
-mutation {
-  register(email: "${e}", password: "${p}") {
-    path
-    message
-  }
-}
-`;
-
-const loginMutation = (e: string, p: string) => `
-mutation {
-  login(email: "${e}", password: "${p}") {
-    path
-    message
-  }
-}
-`;
+const client = new TestClient(process.env.TEST_HOST!);
 
 beforeAll(async () => {
     await createTypeormConn();
@@ -39,9 +22,9 @@ const loginExpectError = async (
     message: string,
     path: string
 ) => {
-    const response = await request(process.env.TEST_HOST!, loginMutation(e, p));
+    const res = await client.login(e, p);
 
-    expect(response).toEqual({
+    expect(res.data.data).toEqual({
         login: [
             {
                 path,
@@ -62,13 +45,8 @@ describe("Login user", () => {
         );
 
         // Email has not been confirmed
-        await request(
-            process.env.TEST_HOST!,
-            registerMutation(email, password)
-        );
-
+        await client.register(email, password);
         await loginExpectError(email, password, confirmEmail, "email");
-
         await User.update({ email }, { confirmed: true });
 
         // Incorrect password
@@ -81,11 +59,8 @@ describe("Login user", () => {
     });
 
     test("Successfully logs in user", async () => {
-        const response = await request(
-            process.env.TEST_HOST!,
-            loginMutation(email, password)
-        );
+        const res = await client.login(email, password);
 
-        expect(response).toEqual({ login: null });
+        expect(res.data.data).toEqual({ login: null });
     });
 });
