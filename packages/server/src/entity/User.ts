@@ -1,4 +1,11 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Entity,
+    Column,
+    BaseEntity,
+    PrimaryGeneratedColumn,
+    BeforeInsert
+} from "typeorm";
+import argon2 from "argon2";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -13,4 +20,9 @@ export class User extends BaseEntity {
 
     @Column("boolean", { default: false })
     confirmed: boolean;
+
+    @BeforeInsert()
+    async hashPassword() {
+        this.password = await argon2.hash(this.password);
+    }
 }

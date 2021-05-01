@@ -1,4 +1,4 @@
-import argon2 from "argon2";
+
 import * as yup from "yup";
 
 import { User } from "../../entity/User";
@@ -53,10 +53,9 @@ export const resolvers: ResolverMap = {
                 ];
             }
 
-            const hashedPassword = await argon2.hash(password);
             const user = User.create({
                 email,
-                password: hashedPassword
+                password
             });
             await user.save();
 

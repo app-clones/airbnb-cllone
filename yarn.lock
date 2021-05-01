@@ -24,6 +24,7 @@ __metadata:
     "@types/nodemailer": ^6.4.1
     "@types/uuid": ^8.3.0
     argon2: ^0.27.2
+    axios: ^0.21.1
     connect-redis: ^5.2.0
     dotenv: ^8.2.0
     express-session: ^1.17.1
@@ -2515,6 +2516,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.21.1":
+  version: 0.21.1
+  resolution: "axios@npm:0.21.1"
+  dependencies:
+    follow-redirects: ^1.10.0
+  checksum: 864fb7b5d077d236737f10adca53bf451a93f35a15271f56fba8da07265a02d26b7d881b935a6697dc6adb0549ea3e56d2eecb403edaa3bb78f6479901c10f69
+  languageName: node
+  linkType: hard
+
 "babel-jest@npm:^26.6.3":
   version: 26.6.3
   resolution: "babel-jest@npm:26.6.3"
@@ -4549,6 +4559,16 @@ __metadata:
     locate-path: ^5.0.0
     path-exists: ^4.0.0
   checksum: d612d28e02eaca6cd7128fc9bc9b456e2547a3f9875b2b2ae2dbdc6b8cec52bc2885efcb3ac6c18954e838f4c8e20565d196784b190e1d38565f9dc39aade722
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.10.0":
+  version: 1.14.0
+  resolution: "follow-redirects@npm:1.14.0"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 70c86697f20d0220a26e3af54e9e2cbf3cc380086d945cc8d67a57c03c09ee222f727b31be1a82adafb897943e103f6b707fb91baaaffe218d758b260a4ac1a5
   languageName: node
   linkType: hard
 

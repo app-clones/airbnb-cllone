@@ -63,7 +63,7 @@ describe("Login user", () => {
 
         // Email has not been confirmed
         await request(
-            process.env.TEST_HOST as string,
+            process.env.TEST_HOST!,
             registerMutation(email, password)
         );
 

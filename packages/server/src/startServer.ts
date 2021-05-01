@@ -60,8 +60,7 @@ export const startServer = async () => {
     );
 
     const cors = {
-        credentials: true,
-        origin: "http://localhost:3000"
+        credentials: true
     };
 
     server.express.get("/confirm/:id", confirmEmail);
