@@ -10,7 +10,7 @@ export const resolvers: ResolverMap = {
         bugFix: () => "Fixes annoying bug"
     },
     Mutation: {
-        login: async (_, { email, password }: MutationLoginArgs) => {
+        login: async (_, { email, password }: MutationLoginArgs, { req }) => {
             const user = await User.findOne({ where: { email } });
 
             if (!user) {
@@ -40,6 +40,8 @@ export const resolvers: ResolverMap = {
                     }
                 ];
             }
+
+            req.session.userId = user.id;
 
             return null;
         }
