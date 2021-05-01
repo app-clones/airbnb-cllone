@@ -23,12 +23,12 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - name: Start Redis
-              uses: supercharge/redis-github-action@1.2.0
+              uses: zhulik/redis-action@latest
               with:
-                  redis-version: 5
+                  redis version: 5
 
             - name: Setup Postgresql
-              uses: harmon758/postgresql-action@v1
+              uses: harmon758/postgresql-action@latest
               with:
                   postgresql version: "12.6"
                   postgresql user: "beatzoid"
