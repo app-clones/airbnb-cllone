@@ -61,15 +61,19 @@ export const startServer = async () => {
         })
     );
 
-    const cors = {
-        credentials: true
-    };
+    await createTypeormConn();
+    const app = await server.start({
+        cors: {
+            credentials: true,
+            origin:
+                process.env.NODE_ENV === "test"
+                    ? "*"
+                    : process.env.FRONTEND_HOST!
+        }
+    });
+    console.log("Server is running on http://localhost:4000");
 
     server.express.get("/confirm/:id", confirmEmail);
-
-    await createTypeormConn();
-    const app = await server.start({ cors });
-    console.log("Server is running on http://localhost:4000");
 
     return { app, redis };
 };

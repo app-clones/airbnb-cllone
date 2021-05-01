@@ -11,6 +11,6 @@ export const confirmEmail = async (req: Request, res: Response) => {
         await redis.del(id);
         return res.send("Ok");
     } else {
-        return res.status(401).send("Invalid code");
+        return res.status(400).send("Invalid code");
     }
 };

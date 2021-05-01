@@ -1,5 +1,5 @@
 import Redis from "ioredis";
-import phin from "phin";
+import axios from "axios";
 import { getConnection } from "typeorm";
 
 import { User } from "../entity/User";
@@ -30,8 +30,8 @@ test("Create Confirm Email Link successfully works with correct ID", async () =>
         redis
     );
 
-    const res = await phin(url);
-    expect(res.statusCode).toEqual(200);
+    const res = await axios(url);
+    expect(res.status).toEqual(200);
 
     const user = await User.findOne({ where: { id: userId } });
     expect((user as User).confirmed).toBeTruthy();

@@ -36,7 +36,6 @@ __metadata:
     nodemailer: ^6.6.0
     nodemon: ^2.0.7
     pg: 8.6.0
-    phin: ^3.5.1
     reflect-metadata: 0.1.13
     ts-jest: ^26.5.5
     ts-node: 9.1.1
@@ -3033,13 +3032,6 @@ __metadata:
   version: 0.12.0
   resolution: "caseless@npm:0.12.0"
   checksum: 147f48bff9bebf029d7050e2335da3f8d295f26d157edf08d8c3282c804dae04a462c4cd6efa8179755686aa3aeaca5c28f3e7f3559698bc0484c65e46c36c5b
-  languageName: node
-  linkType: hard
-
-"centra@npm:^2.4.2":
-  version: 2.4.2
-  resolution: "centra@npm:2.4.2"
-  checksum: e06c526d4f27154540ce46a39cee00c965ca29d04ae322d07c4c4418bde6cdace4e300faf64647edb14089585e353db8fdf6e4432c8e010d4ed7f171ac64ab7f
   languageName: node
   linkType: hard
 
@@ -8171,15 +8163,6 @@ __metadata:
   dependencies:
     split2: ^3.1.1
   checksum: 39234fabf08140e5f56a7320a77ffe155e6340379713b19a48c7387eaa3f4b4e39b9dba1aa3e7b8fd1ad1f3f70192f688d01bd09d64353cc74416caf645dda1f
-  languageName: node
-  linkType: hard
-
-"phin@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "phin@npm:3.5.1"
-  dependencies:
-    centra: ^2.4.2
-  checksum: 856ac93eee6ad3cb6845873fb0f17faff55014053a5cc8775287d01cd9d053f3fb7c7437d6fc0b7a7a25069990be136504313ad2d3809449036499c86fc1d5d0
   languageName: node
   linkType: hard
 
