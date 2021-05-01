@@ -34,6 +34,22 @@ export class TestClient {
         );
     }
 
+    async forgotPasswordChange(newPassword: string, key: string) {
+        return axios.post(
+            this.url,
+            {
+                query: `
+                    mutation {
+                        forgotPasswordChange(newPassword: "${newPassword}", key: "${key}") {
+                            path
+                            message
+                        }
+                }`
+            },
+            this.options
+        );
+    }
+
     async logout() {
         return axios.post(
             this.url,

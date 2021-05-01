@@ -11,7 +11,7 @@
         "husky": "^6.0.0"
     },
     "scripts": {
-        "prepare": "husky install",
+        "postinstall": "husky install",
         "test": "cd packages/server  && yarn test"
     }
 }
