@@ -6,6 +6,8 @@ import fs from "fs";
 import path from "path";
 import { GraphQLSchema } from "graphql";
 import session from "express-session";
+import RateLimit from "express-rate-limit";
+import RateLimitRedisStore from "rate-limit-redis";
 import connectRedis from "connect-redis";
 
 import { loadSchemaSync } from "@graphql-tools/load";
@@ -43,6 +45,17 @@ export const startServer = async () => {
             req: request
         })
     });
+
+    server.express.use(
+        RateLimit({
+            store: new RateLimitRedisStore({
+                client: redis
+            }),
+            windowMs: 15 * 60 * 1000, // 15 minutes
+            max: 100, // limit each IP to 100 requests per windowMs,
+            message: "Too many requests from this IP, try again in 15 minutes"
+        })
+    );
 
     const RedisStore = connectRedis(session);
 
