@@ -23,12 +23,12 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - name: Start Redis
-              uses: zhulik/redis-action@latest
+              uses: zhulik/redis-action@1.1.0
               with:
                   redis version: 5
 
             - name: Setup Postgresql
-              uses: harmon758/postgresql-action@latest
+              uses: harmon758/postgresql-action@v1
               with:
                   postgresql version: "12.6"
                   postgresql user: "beatzoid"
