@@ -1,4 +1,6 @@
 import "dotenv/config";
+import "reflect-metadata";
+
 import { GraphQLServer } from "graphql-yoga";
 import fs from "fs";
 import path from "path";

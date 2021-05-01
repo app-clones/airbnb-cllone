@@ -41,6 +41,13 @@ const meQuery = `
 `;
 
 describe("Me query", () => {
+    test("Successfully returns null when user is not logged in", async () => {
+        const response = await axios.post(process.env.TEST_HOST!, {
+            query: meQuery
+        });
+        expect(response.data.data.me).toBeNull();
+    });
+
     test("Successfully get currently logged in user", async () => {
         await axios.post(
             process.env.TEST_HOST!,

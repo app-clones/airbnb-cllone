@@ -52,7 +52,7 @@ const loginExpectError = async (
 };
 
 describe("Login user", () => {
-    test("Sends back correct errors", async () => {
+    test("Successfully sends back correct errors", async () => {
         // Incorrect email
         await loginExpectError(
             "bob@bob.com",
