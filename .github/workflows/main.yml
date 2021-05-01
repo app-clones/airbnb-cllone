@@ -25,5 +25,8 @@ jobs:
             - name: Install Typescript Globally
               run: npm i -g typescript
 
-            - name: Tests
+            - name: Install Dependencies
+              run: yarn install
+
+            - name: Run Tests
               run: yarn test
