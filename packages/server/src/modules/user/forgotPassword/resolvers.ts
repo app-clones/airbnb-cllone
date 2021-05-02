@@ -4,22 +4,19 @@ import argon2 from "argon2";
 import {
     MutationForgotPasswordChangeArgs,
     MutationSendForgotPasswordEmailArgs
-} from "../../types/graphql";
-import { ResolverMap } from "../../types/graphql-utils";
-import { forgotPasswordLockAccount } from "../../utils/forgotPasswordLockAccount";
-import { createForgotPasswordLink } from "../../utils/createForgotPasswordLink";
-import { User } from "../../entity/User";
-import { forgotPasswordPrefix } from "../../utils/constants";
+} from "../../../types/graphql";
+import { ResolverMap } from "../../../types/graphql-utils";
+import { forgotPasswordLockAccount } from "../../../utils/forgotPasswordLockAccount";
+import { createForgotPasswordLink } from "../../../utils/createForgotPasswordLink";
+import { User } from "../../../entity/User";
+import { forgotPasswordPrefix } from "../../../utils/constants";
 import { expiredKeyError } from "./errorMessages";
-import { registerPasswordValidation } from "../../utils/yupSchemas";
-import { formatYupError } from "../../utils/formatYupError";
+import { registerPasswordValidation } from "../../../utils/yupSchemas";
+import { formatYupError } from "../../../utils/formatYupError";
 
 const schema = yup.object().shape({ newPassword: registerPasswordValidation });
 
 export const resolvers: ResolverMap = {
-    Query: {
-        bugfix: () => "Annoying bug fix"
-    },
     Mutation: {
         sendForgotPasswordEmail: async (
             _,

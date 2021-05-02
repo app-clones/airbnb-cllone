@@ -1,11 +1,11 @@
 import { getConnection } from "typeorm";
 import faker from "faker";
 
-import { User } from "../../entity/User";
-import { TestClient } from "../../tests/utils/TestClient";
+import { User } from "../../../entity/User";
+import { TestClient } from "../../../tests/utils/TestClient";
 import { duplicateEmail, invalidEmail, shortEmail } from "./errorMessages";
 import { shortPassword } from "../shared/sharedErrorMessages";
-import { createTestConn } from "../../tests/utils/createTestConn";
+import { createTestConn } from "../../../tests/utils/createTestConn";
 
 const email = faker.internet.email();
 const password = faker.internet.password();

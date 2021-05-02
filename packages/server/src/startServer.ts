@@ -4,16 +4,14 @@ import "reflect-metadata";
 import { GraphQLServer } from "graphql-yoga";
 import fs from "fs";
 import path from "path";
-import { GraphQLSchema } from "graphql";
 import session from "express-session";
 import RateLimit from "express-rate-limit";
 import RateLimitRedisStore from "rate-limit-redis";
 import connectRedis from "connect-redis";
+import glob from "glob";
 
-import { loadSchemaSync } from "@graphql-tools/load";
-import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
-import { addResolversToSchema } from "@graphql-tools/schema";
-import { mergeSchemas } from "@graphql-tools/merge";
+import { mergeTypeDefs, mergeResolvers } from "@graphql-tools/merge";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 
 import { createTypeormConn } from "./utils/createTypeormConn";
 import redis from "./utils/redis";
@@ -22,24 +20,22 @@ import { redisSessionPrefix } from "./utils/constants";
 import { createTestConn } from "./tests/utils/createTestConn";
 
 export const startServer = async () => {
-    const schemas: GraphQLSchema[] = [];
-    const folders = fs.readdirSync(path.join(__dirname, "modules"));
+    const pathToModules = path.join(__dirname, "./modules");
+    const graphqlTypes = glob
+        .sync(`${pathToModules}/**/*.graphql`)
+        .map((x) => fs.readFileSync(x, { encoding: "utf8" }));
+    graphqlTypes.push("type Query { bugfix: String! }");
 
-    folders.forEach((folder) => {
-        if (folder === "shared") return;
-        const { resolvers } = require(`./modules/${folder}/resolvers`);
-        const typeDefs = loadSchemaSync(
-            path.join(__dirname, `./modules/${folder}/schema.graphql`),
-            {
-                loaders: [new GraphQLFileLoader()]
-            }
-        );
-        schemas.push(addResolversToSchema({ schema: typeDefs, resolvers }));
-    });
+    const resolvers = glob
+        .sync(`${pathToModules}/**/resolvers.?s`)
+        .map((resolver) => require(resolver).resolvers);
 
     const server = new GraphQLServer({
         // @ts-ignore
-        schema: mergeSchemas({ schemas }),
+        schema: makeExecutableSchema({
+            typeDefs: mergeTypeDefs(graphqlTypes),
+            resolvers: mergeResolvers(resolvers)
+        }),
         context: ({ request }) => ({
             redis,
             url: request.protocol + "://" + request.get("host"),

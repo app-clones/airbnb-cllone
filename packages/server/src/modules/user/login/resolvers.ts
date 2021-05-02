@@ -1,9 +1,9 @@
 import argon2 from "argon2";
 
-import { User } from "../../entity/User";
-import { MutationLoginArgs } from "../../types/graphql";
-import { ResolverMap } from "../../types/graphql-utils";
-import { userSessionIdPrefix } from "../../utils/constants";
+import { User } from "../../../entity/User";
+import { MutationLoginArgs } from "../../../types/graphql";
+import { ResolverMap } from "../../../types/graphql-utils";
+import { userSessionIdPrefix } from "../../../utils/constants";
 import {
     invalidLogin,
     confirmEmail,
@@ -11,9 +11,6 @@ import {
 } from "./errorMessages";
 
 export const resolvers: ResolverMap = {
-    Query: {
-        bugFix: () => "Fixes annoying bug"
-    },
     Mutation: {
         login: async (
             _,

@@ -2,8 +2,8 @@ import Redis from "ioredis";
 import axios from "axios";
 import { getConnection } from "typeorm";
 
-import { User } from "../../entity/User";
-import { createTestConn } from "../../tests/utils/createTestConn";
+import { User } from "../../../entity/User";
+import { createTestConn } from "../../../tests/utils/createTestConn";
 import { createConfirmEmailLink } from "./createConfirmEmailLink";
 
 let userId = "";
