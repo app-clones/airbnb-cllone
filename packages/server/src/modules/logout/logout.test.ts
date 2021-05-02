@@ -1,14 +1,16 @@
-import { createTypeormConn } from "../../utils/createTypeormConn";
+import faker from "faker";
+
 import { User } from "../../entity/User";
 import { getConnection } from "typeorm";
 import { TestClient } from "../../tests/utils/TestClient";
+import { createTestConn } from "../../tests/utils/createTestConn";
 
 let userId: string;
-const email = "testing@testing.com";
-const password = "password123";
+const email = faker.internet.email();
+const password = faker.internet.password();
 
 beforeAll(async () => {
-    await createTypeormConn();
+    await createTestConn();
     const user = await User.create({
         email,
         password,

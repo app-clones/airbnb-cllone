@@ -1,7 +1,7 @@
-// something
-import { createTypeormConn } from "../../utils/createTypeormConn";
-import { User } from "../../entity/User";
 import { getConnection } from "typeorm";
+import faker from "faker";
+
+import { User } from "../../entity/User";
 import { TestClient } from "../../tests/utils/TestClient";
 import { createForgotPasswordLink } from "../../utils/createForgotPasswordLink";
 import Redis from "../../utils/redis";
@@ -9,16 +9,17 @@ import { forgotPasswordLockAccount } from "../../utils/forgotPasswordLockAccount
 import { forgotPasswordLockedError } from "../login/errorMessages";
 import { shortPassword } from "../shared/sharedErrorMessages";
 import { expiredKeyError } from "./errorMessages";
+import { createTestConn } from "../../tests/utils/createTestConn";
 
 let userId: string;
-const email = "testing@testing.com";
-const password = "password123";
-const newPassword = "password321";
+const email = faker.internet.email();
+const password = faker.internet.password();
+const newPassword = faker.internet.password();
 const client = new TestClient(process.env.TEST_HOST!);
 const redis = Redis;
 
 beforeAll(async () => {
-    await createTypeormConn();
+    await createTestConn();
     const user = await User.create({
         email,
         password,

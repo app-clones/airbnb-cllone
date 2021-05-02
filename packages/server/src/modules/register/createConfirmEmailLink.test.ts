@@ -2,15 +2,15 @@ import Redis from "ioredis";
 import axios from "axios";
 import { getConnection } from "typeorm";
 
-import { User } from "../entity/User";
-import { createConfirmEmailLink } from "../utils/createConfirmEmailLink";
-import { createTypeormConn } from "../utils/createTypeormConn";
+import { User } from "../../entity/User";
+import { createTestConn } from "../../tests/utils/createTestConn";
+import { createConfirmEmailLink } from "./createConfirmEmailLink";
 
 let userId = "";
 const redis = new Redis();
 
 beforeAll(async () => {
-    await createTypeormConn();
+    await createTestConn();
     const user = await User.create({
         email: "jest@testing.com",
         password: "jesttesting123"

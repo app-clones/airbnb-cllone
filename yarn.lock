@@ -19,6 +19,7 @@ __metadata:
     "@types/connect-redis": ^0.0.16
     "@types/express-rate-limit": ^5.1.1
     "@types/express-session": ^1.17.3
+    "@types/faker": ^5.5.3
     "@types/ioredis": ^4.26.1
     "@types/jest": 26.0.23
     "@types/node": 15.0.1
@@ -33,6 +34,7 @@ __metadata:
     dotenv: ^8.2.0
     express-rate-limit: ^5.2.6
     express-session: ^1.17.1
+    faker: ^5.5.3
     graphql: ^15.5.0
     graphql-yoga: ^1.18.3
     ioredis: ^4.27.1
@@ -1757,6 +1759,13 @@ __metadata:
     "@types/qs": "*"
     "@types/serve-static": "*"
   checksum: 2818120a0fd8b7982215864929cdc6cd14942dd44849f93054fe2a90b4233dff67aadc34c73b5937922a02c688b0263d00a4807aa2e59307ac859a1458d73669
+  languageName: node
+  linkType: hard
+
+"@types/faker@npm:^5.5.3":
+  version: 5.5.3
+  resolution: "@types/faker@npm:5.5.3"
+  checksum: 400a10db2a027bbfa3bd91c4a04fbb2bab4ab98f20a3a60b505db1947f24a8efc9040739bf2380d2635d4db558eb13018dd3025a38f5d8643c0fc058f24b5220
   languageName: node
   linkType: hard
 
@@ -4469,6 +4478,13 @@ __metadata:
   version: 1.4.0
   resolution: "extsprintf@npm:1.4.0"
   checksum: 092e011574324c5cddd78b5a27f869c2703613c1140eb7763aef8f5b0e33769a9b4c7dbcc50acd39b6afebe79bf66adcec73bf3c84e095c5bcfb42306d128ad0
+  languageName: node
+  linkType: hard
+
+"faker@npm:^5.5.3":
+  version: 5.5.3
+  resolution: "faker@npm:5.5.3"
+  checksum: d03b74947497b9f6e16ce3b8e06299f95190f942064fc8a43ebfc39b0c447160e00fdf2355060a2589b4aa5827ddcf35cc50674f5a229b2d367b2eb5a3380490
   languageName: node
   linkType: hard
 

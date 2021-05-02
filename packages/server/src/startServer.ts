@@ -19,6 +19,7 @@ import { createTypeormConn } from "./utils/createTypeormConn";
 import redis from "./utils/redis";
 import { confirmEmail } from "./routes/confirmEmail";
 import { redisSessionPrefix } from "./utils/constants";
+import { createTestConn } from "./tests/utils/createTestConn";
 
 export const startServer = async () => {
     const schemas: GraphQLSchema[] = [];
@@ -77,7 +78,12 @@ export const startServer = async () => {
         })
     );
 
-    await createTypeormConn();
+    if (process.env.NODE_ENV === "test") {
+        await createTestConn(true);
+    } else {
+        await createTypeormConn();
+    }
+
     const app = await server.start({
         cors: {
             credentials: true,
