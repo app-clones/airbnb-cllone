@@ -11,10 +11,10 @@ import { createForgotPasswordLink } from "../../../utils/createForgotPasswordLin
 import { User } from "../../../entity/User";
 import { forgotPasswordPrefix } from "../../../utils/constants";
 import { expiredKeyError } from "./errorMessages";
-import { registerPasswordValidation } from "../../../utils/yupSchemas";
+import { passwordValidationSchema } from "@abb/common";
 import { formatYupError } from "../../../utils/formatYupError";
 
-const schema = yup.object().shape({ newPassword: registerPasswordValidation });
+const schema = yup.object().shape({ newPassword: passwordValidationSchema });
 
 export const resolvers: ResolverMap = {
     Mutation: {

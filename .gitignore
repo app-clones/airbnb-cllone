@@ -5,6 +5,7 @@ build/
 tmp/
 temp/
 **/*/.env
+dist
 
 # Yarn V2
 .yarn/*

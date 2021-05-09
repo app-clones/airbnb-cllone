@@ -1,0 +1,19 @@
+{
+    "name": "@abb/common",
+    "description": "",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "__typings__": "dist/index.d.ts",
+    "scripts": {
+        "build": "rimraf dist && tsc"
+    },
+    "author": "Beatzoid",
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^4.2.4"
+    },
+    "dependencies": {
+        "rimraf": "^3.0.2",
+        "yup": "^0.32.9"
+    }
+}
