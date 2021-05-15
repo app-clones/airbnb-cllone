@@ -15,6 +15,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@abb/controller@workspace:packages/controller":
+  version: 0.0.0-use.local
+  resolution: "@abb/controller@workspace:packages/controller"
+  dependencies:
+    "@types/node": ^15.3.0
+    "@types/react": ^17.0.5
+    "@types/react-dom": ^17.0.5
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    rimraf: ^3.0.2
+    typescript: ^4.2.4
+  languageName: unknown
+  linkType: soft
+
 "@abb/server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "@abb/server@workspace:packages/server"
@@ -3564,6 +3578,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^15.3.0":
+  version: 15.3.0
+  resolution: "@types/node@npm:15.3.0"
+  checksum: 44039665ab71a6ec12e6637a9db4ec3123fdfaf52952ca8028a6f1b37c41c2d380e88d28a41e02693bf9d4815307e0ad938815bf8ffedc5f4d045855fa28db06
+  languageName: node
+  linkType: hard
+
 "@types/nodemailer@npm:^6.4.1":
   version: 6.4.1
   resolution: "@types/nodemailer@npm:6.4.1"
@@ -3642,6 +3663,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:^17.0.5":
+  version: 17.0.5
+  resolution: "@types/react-dom@npm:17.0.5"
+  dependencies:
+    "@types/react": "*"
+  checksum: b3e23acb7be9405050abb4bcd443d14b16b2f3ded2d1853528199e4307b17b25186f905ddd236c27b6ef0297e6779b7fedd11fd24ee9170771be45a7e8e70f4b
+  languageName: node
+  linkType: hard
+
 "@types/react-router-dom@npm:^5.1.7":
   version: 5.1.7
   resolution: "@types/react-router-dom@npm:5.1.7"
@@ -3671,6 +3701,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: d7a8121faa889d52148df392751b771be16a45369872e9ad2b5db3d5bb8f76e684db27c2447b440441e3da1f353d434fa20fdcb45b3a56a296aab0757862da77
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.5":
+  version: 17.0.5
+  resolution: "@types/react@npm:17.0.5"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: f9793e8113f14122d6ed20643b4fe27d30e10d7c80571a1d238c13f8171864f2a7b337194bf41310724498586ed4560fffd081a2d21e488afbb1aca33534189b
   languageName: node
   linkType: hard
 
