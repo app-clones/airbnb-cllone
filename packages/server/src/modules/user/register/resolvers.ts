@@ -4,6 +4,7 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { createConfirmEmailLink } from "./createConfirmEmailLink";
 import { formatYupError } from "../../../utils/formatYupError";
 import { sendEmail } from "../../../utils/sendEmail";
+
 import { userValidationSchema, duplicateEmail } from "@abb/common";
 
 export const resolvers: ResolverMap = {

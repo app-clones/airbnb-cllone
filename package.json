@@ -4,7 +4,6 @@
         "packages/*"
     ],
     "nohoist": [
-        "**/typeorm",
         "**/typeorm/**"
     ],
     "devDependencies": {
