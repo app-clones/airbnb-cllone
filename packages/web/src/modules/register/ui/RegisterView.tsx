@@ -1,9 +1,10 @@
 import { PureComponent } from "react";
-import { Form, Input, Button } from "antd";
+import { Form as AntForm, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { FormikErrors, FormikProps, withFormik } from "formik";
+import { FormikErrors, FormikProps, withFormik, Field, Form } from "formik";
 
 import { userValidationSchema } from "@abb/common";
+import { InputField } from "../../shared/InputField";
 
 interface FormValues {
     email: string;
@@ -16,68 +17,37 @@ interface Props {
 
 class C extends PureComponent<FormikProps<FormValues> & Props> {
     render() {
-        const {
-            values,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            touched,
-            errors
-        } = this.props;
-
         return (
-            <form
+            <Form
                 style={{
                     display: "flex"
                 }}
-                onSubmit={handleSubmit}
             >
                 <div style={{ width: 400, margin: "auto", marginTop: 50 }}>
-                    <Form.Item
-                        help={touched.email && errors.email ? errors.email : ""}
-                        validateStatus={
-                            touched.email && errors.email ? "error" : ""
+                    <Field
+                        name="email"
+                        prefix={
+                            <UserOutlined className="site-form-item-icon" />
                         }
-                    >
-                        <Input
-                            name="email"
-                            prefix={
-                                <UserOutlined className="site-form-item-icon" />
-                            }
-                            placeholder="Email"
-                            value={values.email}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                    </Form.Item>
-                    <Form.Item
-                        help={
-                            touched.password && errors.password
-                                ? errors.password
-                                : ""
+                        placeholder="Email"
+                        component={InputField}
+                    />
+                    <Field
+                        name="password"
+                        prefix={
+                            <LockOutlined className="site-form-item-icon" />
                         }
-                        validateStatus={
-                            touched.password && errors.password ? "error" : ""
-                        }
-                    >
-                        <Input.Password
-                            name="password"
-                            prefix={
-                                <LockOutlined className="site-form-item-icon" />
-                            }
-                            type="password"
-                            placeholder="Password"
-                            value={values.password}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                    </Form.Item>
-                    <Form.Item>
+                        type="password"
+                        placeholder="Password"
+                        component={InputField}
+                        style={{ marginBottom: "0px" }}
+                    />
+                    <AntForm.Item>
                         <a className="login-form-forgot" href="">
                             Forgot password
                         </a>
-                    </Form.Item>
-                    <Form.Item>
+                    </AntForm.Item>
+                    <AntForm.Item>
                         <Button
                             style={{ borderRadius: 5 }}
                             type="primary"
@@ -86,10 +56,10 @@ class C extends PureComponent<FormikProps<FormValues> & Props> {
                         >
                             Register
                         </Button>
-                    </Form.Item>
+                    </AntForm.Item>
                     Already a member? <a href="">Login</a>
                 </div>
-            </form>
+            </Form>
         );
     }
 }

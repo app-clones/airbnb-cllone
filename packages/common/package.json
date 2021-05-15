@@ -3,7 +3,6 @@
     "description": "",
     "version": "1.0.0",
     "main": "src/index.ts",
-    "__typings__": "dist/index.d.ts",
     "scripts": {
         "build": "rimraf dist && tsc"
     },
