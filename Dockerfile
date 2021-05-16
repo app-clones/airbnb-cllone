@@ -15,7 +15,6 @@ COPY ./packages/common/src ./packages/common/src
 
 RUN yarn install && yarn build:server
 
-COPY ./packages/server/.env.prod ./packages/server/.env
 COPY ./ormconfig.json .
 
 WORKDIR /abb/packages/server
