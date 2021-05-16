@@ -4088,12 +4088,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abb@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "abb@workspace:."
-  languageName: unknown
-  linkType: soft
-
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -17170,6 +17164,12 @@ resolve@^2.0.0-next.3:
   checksum: fc59b8af482e0729fd720a6be1221f477ae1848fd88b0474d10f805567aa4ad5f16afa9a976c8fd30fd196fcb689b252826cdd138e7a4ad88462547adb5dbf40
   languageName: node
   linkType: hard
+
+"root-workspace-0b6124@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root-workspace-0b6124@workspace:."
+  languageName: unknown
+  linkType: soft
 
 "rsvp@npm:^4.8.4":
   version: 4.8.5

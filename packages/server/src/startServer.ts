@@ -87,7 +87,8 @@ export const startServer = async () => {
                 process.env.NODE_ENV === "test"
                     ? "*"
                     : process.env.FRONTEND_HOST!
-        }
+        },
+        port: process.env.PORT || 4000
     });
     console.log("Server is running on http://localhost:4000");
 
