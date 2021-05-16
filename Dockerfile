@@ -4,10 +4,17 @@ WORKDIR /abb
 
 COPY ./package.json .
 COPY ./yarn.lock .
-COPY ./packages/server/package.json ./packages/server/
-COPY ./packages/common/package.json ./packages/common/
 
-RUN yarn install --production
+COPY ./packages/server/package.json ./packages/server/
+COPY ./packages/server/tsconfig.json ./packages/server
+COPY ./packages/server/src ./packages/server/src
+
+COPY ./packages/common/package.json ./packages/common/
+COPY ./packages/common/tsconfig.json ./packages/common
+COPY ./packages/common/src ./packages/common/src
+
+RUN ls
+RUN yarn install && yarn build:server
 
 COPY ./packages/server/dist ./packages/server/dist
 COPY ./packages/server/.env.prod ./packages/server/.env

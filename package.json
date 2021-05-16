@@ -11,6 +11,6 @@
         "**/rimraf"
     ],
     "scripts": {
-        "build:server": "cd packages/server && yarn build && cd ../common && yarn build"
+        "build:server": "cd packages/common && yarn build && cd ../server && yarn build"
     }
 }
