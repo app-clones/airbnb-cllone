@@ -5,7 +5,8 @@
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "scripts": {
-        "build": "rimraf ./dist && tsc"
+        "build": "rimraf ./dist && tsc",
+        "gen": "apollo client:codegen --endpoint=http://localhost:4000 --target=typescript --outputFlat src/types/graphql"
     },
     "dependencies": {
         "@apollo/client": "^3.3.18",
