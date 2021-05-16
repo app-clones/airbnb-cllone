@@ -13,12 +13,9 @@ COPY ./packages/common/package.json ./packages/common/
 COPY ./packages/common/tsconfig.json ./packages/common
 COPY ./packages/common/src ./packages/common/src
 
-RUN ls
 RUN yarn install && yarn build:server
 
-COPY ./packages/server/dist ./packages/server/dist
 COPY ./packages/server/.env.prod ./packages/server/.env
-COPY ./packages/common/dist ./packages/common/dist
 COPY ./ormconfig.json .
 
 WORKDIR /abb/packages/server
