@@ -1,4 +1,5 @@
 import { createConnection, getConnectionOptions } from "typeorm";
+import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
 import { User } from "../entity/User";
 
 export const createTypeormConn = async () => {
@@ -7,8 +8,9 @@ export const createTypeormConn = async () => {
         ? createConnection({
               ...connectionOptions,
               url: process.env.DATABASE_URL,
+              ssl: true,
               entities: [User],
               name: "default"
-          } as any)
+          } as PostgresConnectionOptions)
         : createConnection({ ...connectionOptions, name: "default" });
 };
