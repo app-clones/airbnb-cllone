@@ -3,12 +3,19 @@
     "workspaces": [
         "packages/*"
     ],
-    "nohoist": [
+    "__nohoist__": [
         "**/typeorm/**",
         "**/copyfiles/**",
         "**/copyfiles",
         "**/rimraf/**",
-        "**/rimraf"
+        "**/react-native",
+        "**/react-native/**",
+        "**/react-native-scripts",
+        "**/react-native-scripts/**",
+        "**/expo",
+        "**/expo/**",
+        "**/jest-expo",
+        "**/jest-expo/**"
     ],
     "scripts": {
         "build:server": "cd packages/common && yarn build && cd ../server && yarn build",
