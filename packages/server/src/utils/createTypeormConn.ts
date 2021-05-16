@@ -8,7 +8,6 @@ export const createTypeormConn = async () => {
         ? createConnection({
               ...connectionOptions,
               url: process.env.DATABASE_URL,
-              ssl: true,
               entities: [User],
               name: "default"
           } as PostgresConnectionOptions)
