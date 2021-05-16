@@ -1,0 +1,17 @@
+node_modules
+
+# *
+# !**/yarn.lock
+# !./package.json
+
+# !./packages/server/package.json
+# !./packages/server/tsconfig.json 
+# !./packages/server/yarn.lock
+# !./packages/server/.env.prod
+# !./packages/server/.env.example
+
+# !./packages/common/package.json
+# !./packages/common/tsconfig.json
+# !./packages/common/yarn.lock
+
+# !./ormconfig.json

@@ -4,13 +4,13 @@
         "packages/*"
     ],
     "nohoist": [
-        "**/typeorm/**"
+        "**/typeorm/**",
+        "**/copyfiles/**",
+        "**/copyfiles",
+        "**/rimraf/**",
+        "**/rimraf"
     ],
-    "devDependencies": {
-        "husky": "^6.0.0"
-    },
     "scripts": {
-        "postinstall": "husky install",
-        "test": "cd packages/server  && yarn test"
+        "build:server": "cd packages/server && yarn build && cd ../common && yarn build"
     }
 }
