@@ -9,16 +9,16 @@
         "gen": "apollo client:codegen --endpoint=http://localhost:4000 --target=typescript --outputFlat src/types/graphql"
     },
     "dependencies": {
-        "@apollo/client": "^3.3.18",
+        "@apollo/client": "^3.3.21",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "rimraf": "^3.0.2"
     },
     "devDependencies": {
-        "@types/node": "^15.3.0",
-        "@types/react": "^17.0.5",
-        "@types/react-dom": "^17.0.5",
-        "typescript": "^4.2.4"
+        "@types/node": "^16.4.3",
+        "@types/react": "^17.0.15",
+        "@types/react-dom": "^17.0.9",
+        "typescript": "^4.3.5"
     },
     "keywords": [],
     "author": "Beatzoid",

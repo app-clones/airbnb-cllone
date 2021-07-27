@@ -1,5 +1,4 @@
 .idea/
-.vscode/
 node_modules/
 build/
 tmp/
@@ -10,9 +9,9 @@ dist
 
 # Yarn V2
 .yarn/*
+!.yarn/cache
 !.yarn/patches
-!.yarn/releases
 !.yarn/plugins
+!.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-.pnp.*

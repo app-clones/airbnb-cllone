@@ -3,7 +3,7 @@
     "workspaces": [
         "packages/*"
     ],
-    "__nohoist__": [
+    "nohoist": [
         "**/typeorm/**",
         "**/copyfiles/**",
         "**/copyfiles",
