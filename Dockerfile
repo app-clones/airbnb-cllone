@@ -4,6 +4,9 @@ WORKDIR /abb
 
 COPY ./package.json .
 COPY ./yarn.lock .
+RUN mkdir ./.yarn
+COPY ./.yarn ./.yarn
+COPY ./.yarnrc.yml .
 
 COPY ./packages/server/package.json ./packages/server/
 COPY ./packages/server/tsconfig.json ./packages/server
