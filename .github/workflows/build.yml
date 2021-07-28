@@ -30,7 +30,7 @@ jobs:
               run: yarn
 
             - name: Build Server
-              run: yarn build:Server
+              run: yarn build:server
 
             - name: Build Web
               run: yarn build:web
